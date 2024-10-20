@@ -1,12 +1,14 @@
-## Development Sequence
+# Development Sequence
 init laravel project 
 install filament packages 
 install panels from filament package
-create filament user 
-set server port to 9654 and app url to wascna.localhost in .env
-update Caddyfile to reverse proxy to wascna.localhost
+create filament user
 login to url and save password creds
 ## Fabricator Plugin
 install filament fabricator and config
 register plugin in panel provider
 create fabricator layout
+create fabricator page blocks
+make test page block
+add existing pages to backend
+
