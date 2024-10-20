@@ -22,3 +22,4 @@ fix migrations for report type
 updated ReportResource records to save and edit data appropriately by the report type
 
 ## Install Code Editor to Create custom page blocks
+installed ace code editor and created some sample blocks 

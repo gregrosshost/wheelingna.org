@@ -9,6 +9,7 @@
         "filament/filament": "^3.2",
         "laravel/framework": "^11.9",
         "laravel/tinker": "^2.9",
+        "riodwanto/filament-ace-editor": "^1.1",
         "z3d0x/filament-fabricator": "^2.2"
     },
     "require-dev": {
