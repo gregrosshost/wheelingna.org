@@ -17,3 +17,8 @@ create schema for report model
 make migration to create sub committee reports table and create schema
 make migration to create group reports table and create schema 
 run migrations 
+
+fix migrations for report type
+updated ReportResource records to save and edit data appropriately by the report type
+
+## Install Code Editor to Create custom page blocks
