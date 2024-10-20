@@ -7,6 +7,7 @@ use App\Models\Reports\Report;
 use App\Models\Reports\SubCommitteeReport;
 use App\Models\Reports\GroupReport;
 use Filament\Resources\Pages\CreateRecord;
+use Illuminate\Support\Facades\Auth;
 
 class CreateReport extends CreateRecord
 {
@@ -14,6 +15,8 @@ class CreateReport extends CreateRecord
 
   protected function mutateFormDataBeforeCreate(array $data): array
   {
+    $data['user_id'] = Auth::id();
+    $data['submitted_by'] = Auth::user()->name;
     // Remove related data before creating the report
     $relatedData = [];
     if ($data['report_type'] === 'subcommittee') {

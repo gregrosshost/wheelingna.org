@@ -23,3 +23,8 @@ updated ReportResource records to save and edit data appropriately by the report
 
 ## Install Code Editor to Create custom page blocks
 installed ace code editor and created some sample blocks 
+
+## Associate User to Report 
+add user_id to report table
+not null error in sqlite this is the start of a workaround 
+updated fields in ReportResource

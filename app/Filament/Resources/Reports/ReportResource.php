@@ -12,6 +12,7 @@
   use Filament\Tables\Table;
   use Illuminate\Database\Eloquent\Builder;
   use Illuminate\Database\Eloquent\SoftDeletingScope;
+  use Illuminate\Support\Facades\Auth;
 
   class ReportResource extends Resource
   {
@@ -26,6 +27,19 @@
               Forms\Components\Section::make('Submit Report')
                   ->description('Please choose secretary, subcommittee, or group report below.')
                   ->schema([
+                    // Automatically populate the "Submitted By" field with the authenticated user's name
+                      Forms\Components\TextInput::make('submitted_by')
+                          ->label('Submitted By')
+                          ->default(fn () => Auth::user()->name)  // Automatically set the current user's name
+                          ->disabled(),  // Disable the field to make it read-only
+
+                    // Date of submission (can be automatically set to today's date if needed)
+                      Forms\Components\DatePicker::make('date_submitted')
+                          ->label('Date Submitted')
+                          ->default(now())  // Default to today's date
+                          ->disabled(),
+
+                    // Alternatively, you can hide it with ->hidden() if you don't want it visible
                     // Select for Report Type
                       Forms\Components\Select::make('report_type')
                           ->options([
@@ -37,13 +51,7 @@
                           ->label('Report Type')
                           ->reactive(),  // Add reactive() to make the field update in real-time
 
-                      Forms\Components\DatePicker::make('date_submitted')
-                          ->required()
-                          ->label('Date'),
 
-                      Forms\Components\TextInput::make('submitted_by')
-                          ->required()
-                          ->label('Submitted By'),
 
                     // Conditional fields for Sub-committee Report
                       Forms\Components\Select::make('committee_choice')

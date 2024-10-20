@@ -12,6 +12,8 @@ class EditReport extends EditRecord
 
   protected function mutateFormDataBeforeSave(array $data): array
   {
+    // Ensure the submitted_by remains the original user's name
+    $data['submitted_by'] = $this->record->user->name;
     // Remove related data before updating the report
     $relatedData = [];
     if ($data['report_type'] === 'subcommittee') {
