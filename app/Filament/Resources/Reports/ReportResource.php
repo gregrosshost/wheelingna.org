@@ -133,7 +133,8 @@
                 ->label('Report Type'),
           ])
           ->actions([
-              Tables\Actions\EditAction::make(),
+              Tables\Actions\EditAction::make()
+                  ->visible(fn ($record) => auth()->user()->id === $record->user_id),  // Only show if the user owns the report
               Tables\Actions\ViewAction::make(),
           ])
           ->bulkActions([

@@ -5,10 +5,17 @@ namespace App\Filament\Resources\Reports\ReportResource\Pages;
 use App\Filament\Resources\Reports\ReportResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
+use Illuminate\Auth\Access\Gate;
 
 class EditReport extends EditRecord
 {
   protected static string $resource = ReportResource::class;
+
+  protected function authorizeAccess(): void
+  {
+    // This will automatically throw a 403 if unauthorized
+    $this->authorize('update', $this->record);
+  }
 
   protected function mutateFormDataBeforeSave(array $data): array
   {

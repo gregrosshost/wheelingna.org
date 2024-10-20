@@ -28,3 +28,7 @@ installed ace code editor and created some sample blocks
 add user_id to report table
 not null error in sqlite this is the start of a workaround 
 updated fields in ReportResource
+
+## Create Report Policy 
+currently works so only the person that submitted it can edit it 
+

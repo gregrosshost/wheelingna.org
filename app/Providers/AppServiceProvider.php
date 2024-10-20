@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\Reports\Report;
+use App\Policies\ReportPolicy;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -19,6 +22,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+      // Register your policies here
+      Gate::policy(Report::class, ReportPolicy::class);
     }
 }

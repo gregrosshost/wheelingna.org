@@ -17,6 +17,10 @@ class CreateReport extends CreateRecord
   {
     $data['user_id'] = Auth::id();
     $data['submitted_by'] = Auth::user()->name;
+    // Ensure date_submitted is set, use the current date if not provided
+    $data['date_submitted'] = $data['date_submitted'] ?? now();
+
+
     // Remove related data before creating the report
     $relatedData = [];
     if ($data['report_type'] === 'subcommittee') {
