@@ -7,6 +7,8 @@
   use App\Models\Reports\Report;
   use Filament\Forms;
   use Filament\Forms\Form;
+  use Filament\Infolists\Components\TextEntry;
+  use Filament\Infolists\Infolist;
   use Filament\Resources\Resource;
   use Filament\Tables;
   use Filament\Tables\Table;
@@ -142,12 +144,48 @@
           ]);
     }
 
+    public static function infolist(Infolist $infolist): Infolist
+    {
+      return $infolist
+          ->schema([
+            // Common Fields
+              TextEntry::make('submitted_by')
+                  ->label('Submitted By'),
 
+              TextEntry::make('date_submitted')
+                  ->label('Date Submitted'),
 
+              TextEntry::make('report_type')
+                  ->label('Report Type')
+                  ->formatStateUsing(fn ($state) => match ($state) {
+                    'secretary' => 'Secretary Report',
+                    'subcommittee' => 'Sub-committee Report',
+                    'group' => 'Group Report',
+                    default => 'Unknown',
+                  }),
 
+            // Conditional Field: Committee Choice for Sub-committee Report
+              TextEntry::make('subCommitteeReport.committee_choice')
+                  ->label('Committee Choice')
+                  ->visible(fn ($record) => $record->report_type === 'subcommittee'),
 
+            // Conditional Field: Group Name for Group Report
+              TextEntry::make('groupReport.group_name')
+                  ->label('Group Name')
+                  ->visible(fn ($record) => $record->report_type === 'group'),
 
+            // Conditional Field: Active Members for Group Report
+              TextEntry::make('groupReport.active_members')
+                  ->label('Active Members')
+                  ->visible(fn ($record) => $record->report_type === 'group'),
 
+              TextEntry::make('report_text')
+                  ->label('Report Text'),
+
+              TextEntry::make('file_upload')
+                  ->label('Uploaded File'),
+          ]);
+    }
 
 
     public static function getRelations(): array

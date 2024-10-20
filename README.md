@@ -32,3 +32,7 @@ updated fields in ReportResource
 ## Create Report Policy 
 currently works so only the person that submitted it can edit it 
 
+## Create View Report Page
+had to use infolist to get the report data to show up on the page
+
+## Making File Uploads work 
