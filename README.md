@@ -36,3 +36,5 @@ currently works so only the person that submitted it can edit it
 had to use infolist to get the report data to show up on the page
 
 ## Making File Uploads work 
+created livewire component and used filament form 
+
