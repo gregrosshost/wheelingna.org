@@ -2,10 +2,12 @@
 
   namespace App\Filament\Resources\Reports;
 
+  use App\Filament\Components\ReportFormComponent;
   use App\Filament\Resources\Reports\ReportResource\Pages;
   use App\Filament\Resources\Reports\ReportResource\RelationManagers;
   use App\Models\Reports\Report;
   use Filament\Forms;
+  use Filament\Forms\Components\FileUpload;
   use Filament\Forms\Form;
   use Filament\Infolists\Components\TextEntry;
   use Filament\Infolists\Infolist;
@@ -15,6 +17,7 @@
   use Illuminate\Database\Eloquent\Builder;
   use Illuminate\Database\Eloquent\SoftDeletingScope;
   use Illuminate\Support\Facades\Auth;
+  use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 
   class ReportResource extends Resource
   {
@@ -25,77 +28,9 @@
     public static function form(Form $form): Form
     {
       return $form
-          ->schema([
-              Forms\Components\Section::make('Submit Report')
-                  ->description('Please choose secretary, subcommittee, or group report below.')
-                  ->schema([
-                    // Automatically populate the "Submitted By" field with the authenticated user's name
-                      Forms\Components\TextInput::make('submitted_by')
-                          ->label('Submitted By')
-                          ->default(fn () => Auth::user()->name)  // Automatically set the current user's name
-                          ->disabled(),  // Disable the field to make it read-only
-
-                    // Date of submission (can be automatically set to today's date if needed)
-                      Forms\Components\DatePicker::make('date_submitted')
-                          ->label('Date Submitted')
-                          ->default(now())  // Default to today's date
-                          ->disabled(),
-
-                    // Alternatively, you can hide it with ->hidden() if you don't want it visible
-                    // Select for Report Type
-                      Forms\Components\Select::make('report_type')
-                          ->options([
-                              'secretary' => 'Secretary Report',
-                              'subcommittee' => 'Sub-committee Report',
-                              'group' => 'Group Report',
-                          ])
-                          ->required()
-                          ->label('Report Type')
-                          ->reactive(),  // Add reactive() to make the field update in real-time
-
-
-
-                    // Conditional fields for Sub-committee Report
-                      Forms\Components\Select::make('committee_choice')
-                          ->label('Committee Choice')
-                          ->options([
-                              'option_1' => 'Option 1',
-                              'option_2' => 'Option 2',
-                              'option_3' => 'Option 3',
-                            // Add all 12 options here
-                          ])
-                          ->visible(fn(Forms\Get $get) => $get('report_type') === 'subcommittee'),
-
-                    // Conditional fields for Group Report
-                      Forms\Components\TextInput::make('group_name')
-                          ->label('Group Name')
-                          ->visible(fn(Forms\Get $get) => $get('report_type') === 'group'),
-
-                      Forms\Components\TextInput::make('active_members')
-                          ->label('Active Members')
-                          ->numeric()
-                          ->visible(fn(Forms\Get $get) => $get('report_type') === 'group'),
-                  ]),
-
-              Forms\Components\Section::make('Fill out Report')
-                  ->description('Please submit the report below by uploading your report or typing it in the report field.')
-                  ->schema([
-
-                      Forms\Components\FileUpload::make('file_upload')
-                          ->label('Report File Upload')
-                          ->nullable(),
-
-                      Forms\Components\RichEditor::make('report_text')
-                          ->label('Report Text')
-                          ->nullable(),
-                  ])
-
-
-
-
-
-
-          ]);
+          ->schema(
+            Report::getForm(),
+          );
     }
 
     public static function table(Table $table): Table
@@ -124,7 +59,7 @@
                     'group' => 'Group Report',
                     default => 'Unknown',
                   }),
-          ])
+          ])->defaultSort('date_submitted', 'desc')
           ->filters([
             Tables\Filters\SelectFilter::make('report_type')
                 ->options([
@@ -149,8 +84,6 @@
       return $infolist
           ->schema([
             // Common Fields
-              TextEntry::make('submitted_by')
-                  ->label('Submitted By'),
 
               TextEntry::make('date_submitted')
                   ->label('Date Submitted'),
@@ -163,6 +96,9 @@
                     'group' => 'Group Report',
                     default => 'Unknown',
                   }),
+
+              TextEntry::make('submitted_by')
+                  ->label('Submitted By'),
 
             // Conditional Field: Committee Choice for Sub-committee Report
               TextEntry::make('subCommitteeReport.committee_choice')
@@ -180,10 +116,19 @@
                   ->visible(fn ($record) => $record->report_type === 'group'),
 
               TextEntry::make('report_text')
-                  ->label('Report Text'),
+                  ->label('Report Text')
+                  ->columnSpanFull(),
 
               TextEntry::make('file_upload')
-                  ->label('Uploaded File'),
+                  ->label('Uploaded File')
+                  ->url(fn ($record) => $record->file_upload ? config('app.url') . '/storage/' . $record->file_upload : null)
+                  ->openUrlInNewTab()
+                  ->visible(fn ($record) => !is_null($record->file_upload))  // Only show if a file is uploaded
+                  ->extraAttributes([
+                      'style' => 'color: blue; text-decoration: underline;',  // Change text color to blue and underline it
+                      'class' => 'font-bold hover:text-indigo-600 transition',  // Add a bold font and hover effect
+                  ])
+                  ->columnSpanFull(),
           ]);
     }
 
