@@ -6,11 +6,11 @@ use Filament\Forms\Components\Builder\Block;
 use Riodwanto\FilamentAceEditor\AceEditor;
 use Z3d0X\FilamentFabricator\PageBlocks\PageBlock;
 
-class CodeEditorBlock extends PageBlock
+class CodeBlock extends PageBlock
 {
     public static function getBlockSchema(): Block
     {
-        return Block::make('code-editor')
+        return Block::make('code')
             ->schema([
                 AceEditor::make('tags')
                     ->mode('html')

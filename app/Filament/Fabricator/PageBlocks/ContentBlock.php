@@ -3,17 +3,18 @@
 namespace App\Filament\Fabricator\PageBlocks;
 
 use Filament\Forms\Components\Builder\Block;
-use Riodwanto\FilamentAceEditor\AceEditor;
+use Filament\Forms\Components\RichEditor;
 use Z3d0X\FilamentFabricator\PageBlocks\PageBlock;
 
-class HtmlBodyTagBlock extends PageBlock
+class ContentBlock extends PageBlock
 {
     public static function getBlockSchema(): Block
     {
-        return Block::make('html-body-tag')
+        return Block::make('content')
             ->schema([
-                AceEditor::make('tags')
-                    ->mode('html')
+                RichEditor::make('content')
+                    ->label('Content')
+                    ->extraAttributes(['class' => 'max-h-96'])
             ]);
     }
 

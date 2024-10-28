@@ -10,9 +10,7 @@ class ReportFormBlock extends PageBlock
     public static function getBlockSchema(): Block
     {
         return Block::make('report-form')
-            ->schema([
-                 
-            ]);
+            ->schema([]);
     }
 
     public static function mutateData(array $data): array
