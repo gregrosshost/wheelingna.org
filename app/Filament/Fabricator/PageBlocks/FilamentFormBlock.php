@@ -2,19 +2,17 @@
 
 namespace App\Filament\Fabricator\PageBlocks;
 
+use App\Models\Reports\Report;
 use Filament\Forms\Components\Builder\Block;
-use Filament\Forms\Components\RichEditor;
 use Z3d0X\FilamentFabricator\PageBlocks\PageBlock;
 
-class PageContentBlock extends PageBlock
+class FilamentFormBlock extends PageBlock
 {
     public static function getBlockSchema(): Block
     {
-        return Block::make('page-content')
+        return Block::make('filament-form')
             ->schema([
-                RichEditor::make('content')
-                    ->label('Content')
-                    ->extraAttributes(['class' => 'max-h-96'])
+                Report::getForm()
             ]);
     }
 

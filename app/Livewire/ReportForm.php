@@ -15,6 +15,7 @@
   use Filament\Forms\Concerns\InteractsWithForms;
   use Filament\Forms\Contracts\HasForms;
   use Filament\Forms\Form;
+  use Filament\Forms\Get;
   use Filament\Notifications\Notification;
   use Illuminate\Support\Facades\Auth;
   use Livewire\Component;
@@ -45,7 +46,8 @@
                           ->hidden(),
 
                       TextInput::make('submitted_by')
-                          ->label('Submitted By'),
+                          ->label('Submitted By')
+                          ->required(),
 //                          ->default(fn() => Auth::user()->name)
 //                          ->disabled(),
 
@@ -88,13 +90,18 @@
                           ->directory('reports')
                           ->disk('public')
                           ->nullable()
-                          ->maxSize(2048)
+//                          ->maxSize(2048)
                           ->acceptedFileTypes(['application/pdf', 'image/*'])
-                          ->getUploadedFileNameForStorageUsing(function (TemporaryUploadedFile $file): string {
+                          ->getUploadedFileNameForStorageUsing(function (TemporaryUploadedFile $file, Get $get): string {
                             $currentDate = now()->format('Y-m-d');
+
+                            // Fetch the reactive value of 'submitted_by' field
+                            $submittedBy = $get('submitted_by') ?? 'unknown';
+                            $userName = str_replace(' ', '-', $submittedBy);  // Replace spaces with dashes
+
                             $originalName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
-                            $userName = str_replace(' ', '-', Auth::user()->name);
                             $extension = $file->getClientOriginalExtension();
+
                             return "{$currentDate}_{$originalName}_{$userName}.{$extension}";
                           }),
 
