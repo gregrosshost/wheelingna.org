@@ -4,12 +4,5 @@
 
         {!! $calendarContent !!}
         {!! $calendar !!}
-
-        {!! $eventContent !!}
-        {!! $eventTitle !!}
-        {!! $eventDate !!}
-        {!! $eventLocation !!}
-        {!! $eventFlyer !!}
-
     </div>
 </div>
