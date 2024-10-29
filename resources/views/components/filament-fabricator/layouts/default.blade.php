@@ -13,6 +13,7 @@
         <article class="prose prose-lg max-w-none">
           <div class="text-gray-700">
              <x-filament-fabricator::page-blocks :blocks="$page->blocks" />
+              @stack('htmlBody')
           </div>
         </article>
 

@@ -18,6 +18,7 @@
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
 
+        @stack('htmlHead')
         @filamentStyles
         @vite('resources/css/app.css')
     </head>
@@ -41,7 +42,11 @@
         </nav>
 
 
-        {{ $slot }}
+                    {{ $slot }}
+
+
+
+
 
         <!-- Footer -->
         <footer class="bg-green-300 border-t border-gray-200">
@@ -61,6 +66,7 @@
                 </div>
             </div>
         </footer>
+
 
         @filamentScripts
         @vite('resources/js/app.js')
