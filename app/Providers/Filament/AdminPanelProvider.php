@@ -65,7 +65,9 @@ class AdminPanelProvider extends PanelProvider
                     ->timezone(config('app.timezone'))
                     ->locale(config('app.locale'))
                     ->plugins(['dayGrid', 'timeGrid'])
-                    ->config([])
+                    ->config([
+                        'contentHeight' => 'auto',
+                    ])
             ]);
     }
 }

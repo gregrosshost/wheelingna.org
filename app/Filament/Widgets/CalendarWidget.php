@@ -13,6 +13,7 @@ use Filament\Forms\Form;
 use Illuminate\Database\Eloquent\Model;
 use Saade\FilamentFullCalendar\Actions\DeleteAction;
 use Saade\FilamentFullCalendar\Actions\EditAction;
+use Saade\FilamentFullCalendar\Actions\ViewAction;
 use Saade\FilamentFullCalendar\Data\EventData;
 use Saade\FilamentFullCalendar\Widgets\FullCalendarWidget;
 
@@ -49,6 +50,7 @@ class CalendarWidget extends FullCalendarWidget
                 }
             ),
         DeleteAction::make(),
+        ViewAction::make()
     ];
   }
 
@@ -65,10 +67,6 @@ class CalendarWidget extends FullCalendarWidget
                 ->title($event->name)
                 ->start($event->starts_at)
                 ->end($event->ends_at)
-                ->url(
-                    url: EventResource::getUrl(name: 'view', parameters: ['record' => $event]),
-                    shouldOpenUrlInNewTab: true
-                )
         )
         ->toArray();
   }
