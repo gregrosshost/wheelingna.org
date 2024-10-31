@@ -1,13 +1,13 @@
 <x-layouts.app>
-    <!-- Hero Banner -->
-    <x-banner show-full-banner />
+    <!-- Lead Banner -->
+    <x-banners.banner />
 
     <!-- Main -->
-    <main class="bg-blue-400">
+    <main class="bg-secondary">
     <!-- Inner Container -->
-    <div class="max-w-7xl mx-auto py-6 lg:px-8 px-4 sm:px-0">
+    <div class="mx-auto max-w-7xl px-2 py-6 md:px-4 lg:px-8">
     <!-- Navigation Grid -->
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6 auto-rows-fr">
+    <div class="grid auto-rows-fr grid-cols-2 gap-4 md:grid-cols-3 md:gap-6 lg:grid-cols-5">
         <x-page-link
             href="/about"
             title="About"
