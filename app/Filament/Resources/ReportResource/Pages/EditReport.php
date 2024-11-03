@@ -1,11 +1,9 @@
 <?php
 
-namespace App\Filament\Resources\Reports\ReportResource\Pages;
+namespace App\Filament\Resources\ReportResource\Pages;
 
-use App\Filament\Resources\Reports\ReportResource;
-use Filament\Actions;
+use App\Filament\Resources\ReportResource;
 use Filament\Resources\Pages\EditRecord;
-use Illuminate\Auth\Access\Gate;
 
 class EditReport extends EditRecord
 {

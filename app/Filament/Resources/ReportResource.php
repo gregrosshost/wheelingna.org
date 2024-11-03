@@ -1,23 +1,17 @@
 <?php
 
-  namespace App\Filament\Resources\Reports;
+  namespace App\Filament\Resources;
 
   use App\Filament\Components\ReportFormComponent;
   use App\Filament\Resources\Reports\ReportResource\Pages;
   use App\Filament\Resources\Reports\ReportResource\RelationManagers;
   use App\Models\Reports\Report;
-  use Filament\Forms;
-  use Filament\Forms\Components\FileUpload;
   use Filament\Forms\Form;
   use Filament\Infolists\Components\TextEntry;
   use Filament\Infolists\Infolist;
   use Filament\Resources\Resource;
   use Filament\Tables;
   use Filament\Tables\Table;
-  use Illuminate\Database\Eloquent\Builder;
-  use Illuminate\Database\Eloquent\SoftDeletingScope;
-  use Illuminate\Support\Facades\Auth;
-  use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 
   class ReportResource extends Resource
   {
@@ -143,9 +137,9 @@
     public static function getPages(): array
     {
       return [
-          'index' => Pages\ListReports::route('/'),
-          'create' => Pages\CreateReport::route('/create'),
-          'edit' => Pages\EditReport::route('/{record}/edit'),
+          'index' => \App\Filament\Resources\ReportResource\Pages\ListReports::route('/'),
+          'create' => \App\Filament\Resources\ReportResource\Pages\CreateReport::route('/create'),
+          'edit' => \App\Filament\Resources\ReportResource\Pages\EditReport::route('/{record}/edit'),
       ];
     }
   }
