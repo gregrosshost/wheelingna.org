@@ -17,7 +17,7 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
-use Saade\FilamentFullCalendar\FilamentFullCalendarPlugin;
+//use Saade\FilamentFullCalendar\FilamentFullCalendarPlugin;
 use Z3d0X\FilamentFabricator\FilamentFabricatorPlugin;
 
 class AdminPanelProvider extends PanelProvider
@@ -30,7 +30,7 @@ class AdminPanelProvider extends PanelProvider
             ->path('admin')
             ->login()
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => '#355955',
             ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
@@ -58,16 +58,16 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->plugins([
                 FilamentFabricatorPlugin::make(),
-                FilamentFullCalendarPlugin::make()
-                    ->schedulerLicenseKey('')
-                    ->selectable(true)
-                    ->editable()
-                    ->timezone(config('app.timezone'))
-                    ->locale(config('app.locale'))
-                    ->plugins(['dayGrid', 'timeGrid'])
-                    ->config([
-                        'contentHeight' => 'auto',
-                    ])
+//                FilamentFullCalendarPlugin::make()
+//                    ->schedulerLicenseKey('')
+//                    ->selectable(true)
+//                    ->editable()
+//                    ->timezone(config('app.timezone'))
+//                    ->locale(config('app.locale'))
+//                    ->plugins(['dayGrid', 'timeGrid'])
+//                    ->config([
+//                        'contentHeight' => 'auto',
+//                    ])
             ]);
     }
 }
