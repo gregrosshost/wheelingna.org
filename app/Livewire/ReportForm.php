@@ -91,7 +91,7 @@
                           ->disk('public')
                           ->nullable()
 //                          ->maxSize(2048)
-                          ->acceptedFileTypes(['application/pdf', 'image/*'])
+//                          ->acceptedFileTypes(['application/pdf', 'image/*'])
                           ->getUploadedFileNameForStorageUsing(function (TemporaryUploadedFile $file, Get $get): string {
                             $currentDate = now()->format('Y-m-d');
 

@@ -3,8 +3,8 @@
   namespace App\Filament\Resources;
 
   use App\Filament\Components\ReportFormComponent;
-  use App\Filament\Resources\Reports\ReportResource\Pages;
-  use App\Filament\Resources\Reports\ReportResource\RelationManagers;
+  use App\Filament\Resources\ReportResource\Pages;
+  use App\Filament\Resources\ReportResource\RelationManagers;
   use App\Models\Reports\Report;
   use Filament\Forms\Form;
   use Filament\Infolists\Components\TextEntry;
