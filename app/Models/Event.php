@@ -6,20 +6,21 @@ use Illuminate\Database\Eloquent\Model;
 
 class Event extends Model
 {
-    protected $fillable = [
-        'title',
-        'venue',
-        'address',
-        'city',
-        'state',
-        'zip',
-        'starts_at',
-        'ends_at',
-    ];
+  protected $fillable = [
+      'title',
+      'venue',
+      'address',
+      'city',
+      'state',
+      'zip',
+      'starts_at',
+      'ends_at',
+      'images',
+      'volunteers',
+  ];
 
-  public function volunteers(): \Illuminate\Database\Eloquent\Relations\HasMany
-  {
-    return $this->hasMany(Volunteer::class);
-  }
-
+  protected $casts = [
+      'volunteers' => 'array',
+      'is_active' => 'boolean',
+  ];
 }

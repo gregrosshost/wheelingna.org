@@ -8,11 +8,13 @@
   </div>
   <div class="event-list">
     @foreach($events as $event)
-      <div class="event-item">
-        <h3>{{ $event->name }}</h3>
-        <p>{{ $event->starts_at }} - {{ $event->ends_at }}</p>
-        <p>{{ $event->venue }}</p>
-      </div>
+      <a href="{{ route('calendar.events.event', $event->id) }}" >
+        <div class="event-item">
+          <h3>{{ $event->name }}</h3>
+          <p>{{ $event->starts_at }} - {{ $event->ends_at }}</p>
+          <p>{{ $event->venue }}</p>
+        </div>
+      </a>
     @endforeach
   </div>
 </div>

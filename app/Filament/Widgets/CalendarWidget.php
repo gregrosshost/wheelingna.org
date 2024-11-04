@@ -44,8 +44,8 @@
 //                  $form->fill([
 //                      'name' => $record->name,
 //                      'venue' => $record->venue,
-//                      'starts_at' => $arguments['event']['start'] ?? $record->starts_at,
-//                      'ends_at' => $arguments['event']['end'] ?? $record->ends_at
+//                      'starts_at' => $arguments['events']['start'] ?? $record->starts_at,
+//                      'ends_at' => $arguments['events']['end'] ?? $record->ends_at
 //                  ]);
 //                }
 //            ),
@@ -62,11 +62,11 @@
 //        ->where('ends_at', '<=', $fetchInfo['end'])
 //        ->get()
 //        ->map(
-//            fn (Event $event) => EventData::make()
-//                ->id($event->id)
-//                ->title($event->name)
-//                ->start($event->starts_at)
-//                ->end($event->ends_at)
+//            fn (Event $events) => EventData::make()
+//                ->id($events->id)
+//                ->title($events->name)
+//                ->start($events->starts_at)
+//                ->end($events->ends_at)
 //        )
 //        ->toArray();
 //  }

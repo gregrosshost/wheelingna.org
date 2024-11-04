@@ -3,15 +3,13 @@
   namespace App\Filament\Resources;
 
   use App\Filament\Resources\EventResource\Pages;
-  use App\Filament\Resources\EventResource\RelationManagers;
   use App\Models\Event;
   use Filament\Forms;
   use Filament\Forms\Form;
   use Filament\Resources\Resource;
   use Filament\Tables;
   use Filament\Tables\Table;
-  use Illuminate\Database\Eloquent\Builder;
-  use Illuminate\Database\Eloquent\SoftDeletingScope;
+  use Illuminate\Support\Facades\Log;
 
   class EventResource extends Resource
   {
@@ -23,45 +21,40 @@
     {
       return $form
           ->schema([
-              Forms\Components\Section::make('Event Information')
+              Forms\Components\TextInput::make('title')
+                  ->required()
+                  ->maxLength(255),
+              Forms\Components\Textarea::make('venue')
+                  ->required()
+                  ->columnSpanFull(),
+              Forms\Components\TextInput::make('address')
+                  ->required()
+                  ->maxLength(255),
+              Forms\Components\TextInput::make('city')
+                  ->required()
+                  ->maxLength(255),
+              Forms\Components\TextInput::make('state')
+                  ->required()
+                  ->maxLength(255),
+              Forms\Components\TextInput::make('zip')
+                  ->required()
+                  ->maxLength(255),
+              Forms\Components\DateTimePicker::make('starts_at')
+                  ->required(),
+              Forms\Components\DateTimePicker::make('ends_at')
+                  ->required(),
+              Forms\Components\FileUpload::make('images'),
+              Forms\Components\Repeater::make('volunteers')
                   ->schema([
-                      Forms\Components\TextInput::make('title')
-                          ->required()
-                          ->maxLength(255),
-                      Forms\Components\Textarea::make('venue')
-                          ->required()
-                          ->columnSpanFull(),
-                      Forms\Components\TextInput::make('address')
-                          ->required()
-                          ->maxLength(255),
-                      Forms\Components\TextInput::make('city')
-                          ->required()
-                          ->maxLength(255),
-                      Forms\Components\TextInput::make('state')
-                          ->required()
-                          ->maxLength(255),
-                      Forms\Components\TextInput::make('zip')
-                          ->required()
-                          ->maxLength(255),
-                      Forms\Components\DateTimePicker::make('starts_at')
+                      Forms\Components\TextInput::make('name')
                           ->required(),
-                      Forms\Components\DateTimePicker::make('ends_at')
+                      Forms\Components\TextInput::make('phone_number')
+                          ->tel()
                           ->required(),
-                      Forms\Components\TextInput::make('images')
-                          ->maxLength(255),
-                      Forms\Components\Select::make('volunteers')
-                          ->relationship('volunteers', 'name')
-                          ->multiple()
-                          ->createOptionForm([
-                              Forms\Components\TextInput::make('name')->required(),
-                              Forms\Components\TextInput::make('phone_number')->nullable(),
-                              Forms\Components\TextInput::make('bringing')
-                                  ->formatStateUsing(fn ($state) => json_encode($state, JSON_PRETTY_PRINT)),
-                          ])
-                          ->label('Volunteers')
-                          ->helperText('Select existing or create new volunteers')
-
-      ])
+                      Forms\Components\TextInput::make('food_item')
+                          ->required(),
+                  ])
+                  ->columnSpanFull()
           ]);
     }
 
@@ -85,8 +78,11 @@
               Tables\Columns\TextColumn::make('ends_at')
                   ->dateTime()
                   ->sortable(),
-              Tables\Columns\TextColumn::make('images')
-                  ->searchable(),
+//              Tables\Columns\TextColumn::make('volunteers')
+//                  ->formatStateUsing(function ($state) {
+//                    dd($state); // This will show us exactly what's coming in
+//                    return '0 volunteers';
+//                  }),
               Tables\Columns\TextColumn::make('created_at')
                   ->dateTime()
                   ->sortable()
@@ -112,7 +108,7 @@
     public static function getRelations(): array
     {
       return [
-          RelationManagers\VolunteersRelationManager::class,
+        //
       ];
     }
 
