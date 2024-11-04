@@ -11,10 +11,10 @@ export default {
     theme: {
         extend: {
             colors: {
-                primary: '#0054A5',
-                secondary: '#FFFEFF',
-                'dark-primary': '#C39D78',
-                'dark-secondary': '#355955',
+                primary: '#FFFEFF',
+                secondary: '#0054A5',
+                'dark-primary': '#355955',
+                'dark-secondary': '#C39D78',
             },
             typography: {
                 DEFAULT: {
