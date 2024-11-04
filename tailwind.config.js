@@ -7,11 +7,14 @@ export default {
         './resources/views/**/*.blade.php',
         './vendor/filament/**/*.blade.php',
     ],
+    darkMode: 'class',
     theme: {
         extend: {
             colors: {
-                primary: '#355955',
-                secondary: '#C39D78',
+                primary: '#0054A5',
+                secondary: '#FFFEFF',
+                'dark-primary': '#C39D78',
+                'dark-secondary': '#355955',
             },
             typography: {
                 DEFAULT: {
@@ -39,3 +42,4 @@ export default {
         }
     }
 }
+

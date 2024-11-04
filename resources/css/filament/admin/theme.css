@@ -1,3 +1,61 @@
-@import '/vendor/filament/filament/resources/css/theme.css';
+@import '../../../../vendor/filament/filament/resources/css/theme.css';
+
+/* Light Theme */
+:root {
+    --primary: 0 84 165; /* #0054A5 */
+    --secondary: 255 254 255; /* #FFFEFF */
+}
+
+/* Dark Theme */
+.dark {
+    --primary: 195 157 120; /* #C39D78 */
+    --secondary: 53 89 85; /* #355955 */
+}
+
+@layer components {
+    /* Light Theme */
+    .fi-sidebar {
+        @apply bg-primary;
+    }
+
+    .dark .fi-sidebar {
+        @apply bg-dark-primary;
+    }
+
+    .fi-main {
+        @apply bg-secondary;
+    }
+
+    .dark .fi-main {
+        @apply bg-dark-secondary;
+    }
+
+    /* Button overrides */
+    .fi-btn-primary {
+        @apply bg-primary hover:opacity-90;
+    }
+
+    .dark .fi-btn-primary {
+        @apply bg-dark-primary;
+    }
+
+    /* Form field focus states */
+    .fi-input:focus {
+        @apply ring-primary border-primary;
+    }
+
+    .dark .fi-input:focus {
+        @apply ring-dark-primary border-dark-primary;
+    }
+
+    /* Links */
+    .fi-link {
+        @apply text-primary hover:text-secondary;
+    }
+
+    .dark .fi-link {
+        @apply text-dark-primary hover:text-dark-secondary;
+    }
+}
 
 @config 'tailwind.config.js';
