@@ -1,14 +1,14 @@
 @props(['page'])
-<x-layouts.app>
-  <x-page-banner
-      :title="$page->title"
-  />
+<x-site.layout>
 
-  <!-- Main -->
-  <main class="bg-secondary dark:bg-dark-secondary">
-    <!-- Inner Container -->
-    <div class="max-w-7xl mx-auto py-6 lg:px-8 px-4 sm:px-0">
-      <!-- Page Details -->
+  <x-slot:banner>
+    <x-page-banner
+        :title="$page->title"
+    />
+  </x-slot:banner>
+
+  <!-- Page Details -->
+  <main>
       <div class="bg-primary dark:bg-dark-primary rounded-lg shadow-md lg:px-6">
         <article class="prose lg:prose-xl max-w-none dark:prose-invert prose-headings:text-secondary dark:prose-headings:text-dark-secondary prose-p:text-secondary/90 dark:prose-p:text-dark-secondary/90">
           <div class="text-primary dark:text-dark-primary">
@@ -61,7 +61,7 @@
         @endif
 
       </div>
-    </div>
+
   </main>
 
-</x-layouts.app>
+</x-site.layout>
