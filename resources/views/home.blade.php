@@ -1,4 +1,7 @@
 <x-site.layout>
+  <x-slot:banner>
+    <x-banner />
+  </x-slot:banner>
   <main>
     <div class="grid auto-rows-fr grid-cols-2 gap-4 md:grid-cols-3 md:gap-6 lg:grid-cols-5">
 

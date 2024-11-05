@@ -5,8 +5,8 @@
   use App\Http\Controllers\PageController;
   use Illuminate\Support\Facades\Route;
 
-Route::view('/', 'home');
-Route::get('/{slug}', [PageController::class, 'show'])->name('pages.show');
+Route::get('/', [PageController::class, 'index'])->name('home');
+Route::get('/{page:slug}', [PageController::class, 'showPage'])->name('pages.show');
 
 Route::get('/calendar/events/{id}',
     [EventController::class, 'showEvent']

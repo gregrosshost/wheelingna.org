@@ -39,7 +39,11 @@
             </x-site.inner-container>
         </x-site.wrapper>
 
-        <x-banner />
+        <!-- Banner -->
+        <x-site.wrapper class="">
+            {{ $banner ?? '' }}
+        </x-site.wrapper>
+
 
         <!-- Main -->
         <x-site.wrapper class="bg-secondary dark:bg-dark-secondary">
@@ -53,7 +57,8 @@
             <x-site.inner-container>
                 <x-site.footer />
             </x-site.inner-container>
-        </x-site.wrapper>
+        </x-site.wrapper><!DOCTYPE html>
+
 
         @filamentScripts
         @vite('resources/js/app.js')
