@@ -19,15 +19,15 @@
         <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
 
         @stack('htmlHead')
+        @livewireStyles
         @filamentStyles
-        <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
         <script>
             if (localStorage.getItem('darkMode') === 'true' ||
                 (!('darkMode' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
                 document.documentElement.classList.add('dark');
             }
         </script>
-        @vite('resources/css/app.css')
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
 
     <body class="antialiased">
@@ -59,8 +59,7 @@
             </x-site.inner-container>
         </x-site.wrapper><!DOCTYPE html>
 
-
+        @livewireStyles
         @filamentScripts
-        @vite('resources/js/app.js')
     </body>
 </html>
