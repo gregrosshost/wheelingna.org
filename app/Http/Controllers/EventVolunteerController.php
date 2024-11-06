@@ -11,7 +11,7 @@ class EventVolunteerController extends Controller
     {
       $event = Event::findOrFail($eventId);
 
-      return view('calendar.events.volunteer', [
+      return view('volunteer', [
          'event' => $event
       ]);
     }

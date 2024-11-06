@@ -59,7 +59,7 @@
             </x-site.inner-container>
         </x-site.wrapper><!DOCTYPE html>
 
-        @livewireStyles
+        @livewireScripts
         @filamentScripts
     </body>
 </html>

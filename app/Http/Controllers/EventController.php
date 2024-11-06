@@ -10,7 +10,7 @@ class EventController extends Controller
     public function showEvent($id)
     {
       $event = Event::findOrFail($id);
-      return view('calendar.events.event', [
+      return view('event', [
          'event' => $event
       ]);
     }
