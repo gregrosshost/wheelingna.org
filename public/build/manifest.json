@@ -1,0 +1,23 @@
+{
+  "public/assets/nacc-keytags/00_RingTop.png": {
+    "file": "resources/assets/00_RingTop-D_oKhji0.png",
+    "src": "public/assets/nacc-keytags/00_RingTop.png"
+  },
+  "resources/css/app.css": {
+    "file": "resources/assets/app-CCygCKyD.css",
+    "src": "resources/css/app.css",
+    "isEntry": true
+  },
+  "resources/js/app.js": {
+    "file": "resources/assets/app-Bcjqj8jk.js",
+    "name": "app",
+    "src": "resources/js/app.js",
+    "isEntry": true,
+    "css": [
+      "resources/assets/app-CSuTMeQi.css"
+    ],
+    "assets": [
+      "resources/assets/00_RingTop-D_oKhji0.png"
+    ]
+  }
+}
