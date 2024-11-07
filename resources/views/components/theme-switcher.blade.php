@@ -21,14 +21,14 @@
     {{-- Light mode icon --}}
     <img
         x-show="!darkMode"
-        src="{{ Vite::asset('resources/assets/light-mode.webp') }}"
+        src="{{ asset('assets/light-mode.webp') }}"
         alt="Switch to dark mode"
         class="h-6 w-6"
     />
     {{-- Dark mode icon --}}
     <img
         x-show="darkMode"
-        src="{{ Vite::asset('resources/assets/dark-mode.webp') }}"
+        src="{{ asset('assets/dark-mode.webp') }}"
         alt="Switch to light mode"
         class="h-6 w-6"
     />
