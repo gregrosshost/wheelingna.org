@@ -57,7 +57,7 @@
             <x-site.inner-container>
                 <x-site.footer />
             </x-site.inner-container>
-        </x-site.wrapper><!DOCTYPE html>
+        </x-site.wrapper>
 
         @livewireScripts
         @filamentScripts

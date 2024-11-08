@@ -1,4 +1,4 @@
-<div class="relative">
+<div class="relative hidden md:block">
 <!-- Background Image -->
 <div class="absolute inset-0">
   <img src="/assets/banner.jpg" alt="" class="h-full w-full object-cover">

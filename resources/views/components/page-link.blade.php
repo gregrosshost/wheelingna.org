@@ -6,17 +6,17 @@
 ])
 
 <a href="{{ url($href) }}" {{ $attributes->merge(['class' => 'group h-full']) }}>
-  <div class="p-4 bg-secondary dark:bg-dark-secondary rounded-lg border border-primary dark:border-dark-primary shadow-sm hover:bg-primary dark:hover:bg-dark-primary hover:shadow-md transition-all h-full flex flex-col">
-    <div class="flex flex-col items-center md:items-start flex-grow">
+  <div class="flex h-full flex-col rounded-lg border-2 p-4 shadow-sm transition-all bg-secondary border-primary hover:bg-primary hover:shadow-md dark:bg-dark-secondary dark:border-dark-primary dark:hover:bg-dark-primary">
+    <div class="flex flex-grow flex-col items-center md:items-start">
       @if ($icon)
-        <svg class="w-8 h-8 text-primary dark:text-dark-primary group-hover:text-secondary dark:group-hover:text-dark-secondary transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg class="h-8 w-8 transition-colors text-primary group-hover:text-secondary dark:text-dark-primary dark:group-hover:text-dark-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           {!! $icon !!}
         </svg>
       @endif
-      <h3 class="mt-2 font-semibold text-primary dark:text-dark-primary group-hover:text-secondary dark:group-hover:text-dark-secondary transition-colors">
+      <h3 class="mt-2 font-semibold transition-colors text-primary group-hover:text-secondary dark:text-dark-primary dark:group-hover:text-dark-secondary">
         {{ $title }}
       </h3>
-      <p class="mt-1 text-sm text-primary/80 dark:text-dark-primary/80 hidden md:block group-hover:text-secondary/90 dark:group-hover:text-dark-secondary/90 transition-colors">
+      <p class="mt-1 hidden text-sm transition-colors text-primary/80 group-hover:text-secondary/90 dark:text-dark-primary/80 md:block dark:group-hover:text-dark-secondary/90">
         {{ $description }}
       </p>
     </div>
