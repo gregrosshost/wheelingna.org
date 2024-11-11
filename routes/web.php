@@ -8,11 +8,11 @@
 Route::get('/', [PageController::class, 'index'])->name('home');
 //Route::get('/{page:slug}', [PageController::class, 'showPage'])->name('pages.show');
 
-Route::get('/calendar/events/{id}',
+Route::get('/event/{eventDate}',
     [EventController::class, 'showEvent']
-)->name('calendar.events.event');
+)->name('event');
 
-Route::get('/calendar/events/{eventId}/sign-ups',
+Route::get('/event/{eventDate}/sign-ups',
     [EventVolunteerController::class, 'addVolunteer']
-)->name('calendar.events.volunteer');
+)->name('sign-ups');
 

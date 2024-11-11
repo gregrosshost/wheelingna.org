@@ -7,11 +7,12 @@ use Illuminate\Http\Request;
 
 class EventController extends Controller
 {
-    public function showEvent($id)
-    {
-      $event = Event::findOrFail($id);
-      return view('event', [
-         'event' => $event
-      ]);
-    }
+  public function showEvent($date)
+  {
+    $event = Event::whereDate('starts_at', $date)->firstOrFail();
+    $event->starts_at = $event->starts_at->format('Y-m-d');
+    return view('event', [
+        'event' => $event
+    ]);
+  }
 }

@@ -22,5 +22,6 @@ class Event extends Model
   protected $casts = [
       'volunteers' => 'array',
       'is_active' => 'boolean',
+      'starts_at' => 'datetime',
   ];
 }

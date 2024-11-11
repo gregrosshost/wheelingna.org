@@ -7,11 +7,11 @@ use Illuminate\Http\Request;
 
 class EventVolunteerController extends Controller
 {
-    public function addVolunteer($eventId)
+    public function addVolunteer($date)
     {
-      $event = Event::findOrFail($eventId);
-
-      return view('volunteer', [
+      $event = Event::whereDate('starts_at', $date)->firstOrFail();
+      $event->starts_at = $event->starts_at->format('Y-m-d');
+      return view('sign-ups', [
          'event' => $event
       ]);
     }
