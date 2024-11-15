@@ -3,12 +3,12 @@
 
     <!-- Volunteer Form Section -->
 
-    <header class="p-6 border-t border-secondary/10 dark:border-dark-secondary/10">
+    <header class="px-2 py-4 md:p-6 border-t border-secondary/10 dark:border-dark-secondary/10">
       <livewire:volunteer-form :event-id="$event->id"/>
     </header>
 
     <!-- Volunteers List Section -->
-    <section class="p-6 bg-neutral-100 dark:bg-neutral-800">
+    <section class="px-2 py-4 md:p-6 bg-neutral-100 dark:bg-neutral-800">
   <h2 class="text-2xl font-bold mb-4 text-neutral-900 dark:text-neutral-100">Current Volunteers</h2>
 
   @if($event->volunteers && count($event->volunteers) > 0)

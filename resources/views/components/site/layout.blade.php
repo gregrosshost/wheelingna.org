@@ -33,7 +33,7 @@
     <body class="antialiased">
 
         <!-- Nav -->
-        <x-site.wrapper class="border-b border-primary bg-secondary dark:border-dark-primary dark:bg-dark-secondary">
+        <x-site.wrapper class="border-b border-primary bg-secondary dark:border-dark-primary dark:bg-dark-secondary px-2">
             <x-site.inner-container>
                 <x-site.nav />
             </x-site.inner-container>
@@ -53,7 +53,7 @@
         </x-site.wrapper>
 
         <!-- Footer -->
-        <x-site.wrapper class="border-t border-primary bg-primary dark:border-dark-primary dark:bg-dark-primary">
+        <x-site.wrapper class="border-t border-primary bg-secondary dark:border-dark-primary dark:bg-dark-secondary">
             <x-site.inner-container>
                 <x-site.footer />
             </x-site.inner-container>
