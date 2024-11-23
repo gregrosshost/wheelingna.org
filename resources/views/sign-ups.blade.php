@@ -1,15 +1,20 @@
 <x-site.layout>
   <x-site.content-container>
+    <!-- Filament Notifications -->
+    @livewire('notifications')
 
     <!-- Volunteer Form Section -->
-
     <header class="px-2 py-4 md:p-6 border-t border-secondary/10 dark:border-dark-secondary/10">
-      <livewire:volunteer-form :event-id="$event->id"/>
+      <div wire:loading.delay.class="opacity-50">
+        <livewire:volunteer-form :event-id="$event->id"/>
+      </div>
     </header>
 
     <!-- Volunteers List Section -->
-    <section class="px-2 py-4 md:p-6 bg-neutral-100 dark:bg-neutral-800">
-  <h2 class="text-2xl font-bold mb-4 text-neutral-900 dark:text-neutral-100">Current Volunteers</h2>
+    <section class="px-2 py-4 md:p-6 bg-neutral-100 dark:bg-neutral-800"
+             wire:poll.10s
+             wire:loading.class="opacity-50">
+      <h2 class="text-2xl font-bold mb-4 text-neutral-900 dark:text-neutral-100">Current Volunteers</h2>
 
   @if($event->volunteers && count($event->volunteers) > 0)
     <div class="overflow-x-auto">
